@@ -38,3 +38,18 @@ color: #000000;
 .card-body{
     background-color: #4A4A4A;
 }
+
+#searchButton{
+    background-color: lightgray;
+    position: relative;
+    bottom: 80px;
+    left: 500px;
+    border: 1px solid black;
+}
+
+#searchBox{
+    background-color: white;
+    position: relative;
+    bottom: 80px;
+    left: 500px;
+}
