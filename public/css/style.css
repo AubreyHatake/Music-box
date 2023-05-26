@@ -2,15 +2,20 @@
     background-color: #4A4A4A;;
 }
 #btn-primary{
-    color: orange;
+    display: flex;
+    color: white;
     position: relative;
-    bottom: 80px;
+    bottom: 85px;
     left: 500px;
+    background-color:transparent;
+    border: transparent;
+    font-size: 30px;
    }
 .card-title{
-    color: #323332;
-    background-color: #4A4A4A;
+    color: white;
+    background-color: #323332;
     padding: 40px;
+    
 }
 .card text-start{
     color:#323332;
@@ -32,4 +37,24 @@ color: #000000;
 }
 .card-body{
     background-color: #4A4A4A;
+}
+
+#searchButton{
+    background-color: lightgray;
+    position: relative;
+    bottom: 80px;
+    left: 500px;
+    border: 1px solid black;
+}
+
+#searchBox{
+    background-color: white;
+    position: relative;
+    bottom: 80px;
+    left: 500px;
+}
+
+.card-title {
+    position: relative;
+    bottom: 500px;
 }
