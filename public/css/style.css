@@ -53,3 +53,8 @@ color: #000000;
     bottom: 80px;
     left: 500px;
 }
+
+.card-title {
+    position: relative;
+    bottom: 500px;
+}
