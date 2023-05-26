@@ -54,7 +54,6 @@ color: #000000;
     left: 500px;
 }
 
-.card-title {
-    position: relative;
-    bottom: 500px;
+.card-deck {
+    display: flex;
 }
