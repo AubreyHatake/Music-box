@@ -1,11 +1,20 @@
+:root{
+    background-color: #4A4A4A;
+}
 .card-title1{
-    color: #4A4A4A;
+    color: #101010;
+    background-color: #4A4A4A;
+    padding: 40px;
 }
 .card text-start{
     color:black;
 }
-.btn-toolbar{
-    color: black;
+.btn-group{
+background-color: #101010;
+}
+.btn btn-primary{
+    background-color: #4A4A4A;
+    position: relative;
 }
 .card text-start1{
     position: center;
