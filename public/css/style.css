@@ -1,21 +1,35 @@
 :root{
-    background-color: #4A4A4A;
+    background-color: #4A4A4A;;
 }
-.card-title1{
-    color: #101010;
+#btn-primary{
+    color: orange;
+    position: relative;
+    bottom: 80px;
+    left: 500px;
+   }
+.card-title{
+    color: #323332;
     background-color: #4A4A4A;
     padding: 40px;
 }
 .card text-start{
-    color:black;
+    color:#323332;
+    background-color: #4A4A4A;
 }
-.btn-group{
-background-color: #101010;
+.btn-toolbar{
+background-color: #4A4A4A;
+left: 50px;
+bottom: 80px;
+color: #000000;
 }
-.btn btn-primary{
+
+.btn{
     background-color: #4A4A4A;
     position: relative;
 }
 .card text-start1{
     position: center;
+}
+.card-body{
+    background-color: #4A4A4A;
 }
