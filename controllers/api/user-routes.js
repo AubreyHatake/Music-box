@@ -1,6 +1,7 @@
 const { User, Review } = require('../../models');
+const router = require('express').Router(); 
 
-// GET /api/users
+// GET /api/users this is the route we are hitting in insomnia core to get all users
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method
   User.findAll({
