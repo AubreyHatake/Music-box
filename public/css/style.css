@@ -62,4 +62,34 @@ color: #000000;
     top: 800px;
     left: 300px;
 }
-
+.profile-pic-div{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1 solid black;
+}
+#fileUpload{
+display: none;
+}
+#photo{
+    height: 100px;
+    width: 100px;
+}
+#uploadBtn{
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(red, green, blue, alpha);
+    color:wheat;
+    line-height: 30px;
+    font-size: 15px;
+    cursor: pointer;
+}
