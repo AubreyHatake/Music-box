@@ -1,12 +1,12 @@
 const express = require('express')
 const path = require('path');
 const axios = require('axios');
-const sequelize = require('./config/connection');
-const { User, Review } = require('./models');
 const dotenv = require('dotenv');
-dotenv.config();
+const sequelize = require('./config/connection');
+const apiRoutes = require('./controllers/api/user-routes');
 const app = express()
 const port = 3001
+dotenv.config();
 
 app.use('/', express.static(path.join(__dirname, 'public')))
 // app.get('/', (req, res) => {
