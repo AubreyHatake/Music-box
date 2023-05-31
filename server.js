@@ -1,6 +1,10 @@
 const express = require('express')
 const path = require('path');
 const axios = require('axios');
+const sequelize = require('./config/connection');
+const { User, Review } = require('./models');
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express()
 const port = 3001
 
@@ -24,7 +28,7 @@ app.get('/spotify-api', (req, res) => {
           params: {
           client_id:'e8f6052205af42f6a10e9117b2aef8c5',
           grant_type:'client_credentials',
-          client_secret:'blah blah'
+          client_secret:`${process.env.CLIENT_SECRET}`
 
         }, 
           headers: {
@@ -57,5 +61,6 @@ app.get('/spotify-api', (req, res) => {
     }
 })
 
-app.listen(port, () => {
-  console.log(`app listening on port ${port} !! `)})
+sequelize.sync({ force: false }).then(() => {
+  app.listen(port, () => console.log(`app listening on port ${port} !! `));
+});
