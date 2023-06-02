@@ -1,6 +1,6 @@
 const { User, Review } = require('../../models');
 const router = require('express').Router(); 
-const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
 
 // GET /api/users this is the route we are hitting in insomnia core to get all users
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     });
 });
 
-// GET /api/users/1
+// GET /api/users/1 this is the route we are hitting in insomnia core to get a single user by id
 router.get('/:id', (req, res) => {
   User.findOne({
       attributes: { exclude: ['password']},
@@ -80,7 +80,7 @@ router.post('/', (req, res) => {
             res.status(400).json({ message: 'Incorrect password' });
             return;
         }
-
+// this is where we save the session once the user is logged in for the duration of the session
         req.session.save(() => {
             req.session.user_id = dbUserData.id;
             req.session.name = dbUserData.name;
@@ -91,7 +91,7 @@ router.post('/', (req, res) => {
     });
 });
 
-// logout route
+// logout route will destroy the session and log the user out
 router.post('/logout', (req, res) => {
   if (req.session.loggedIn) {
       req.session.destroy(() => {
@@ -104,7 +104,28 @@ router.post('/logout', (req, res) => {
 });
   
 module.exports = router;
-  
+// TODO: PUT request to update a user by id
+router.put('/:id', withAuth, (req, res) => {
+  User.update(req.body, {
+      individualHooks: true,
+      where: {
+          id: req.params.id
+      }
+  })
+  .then(dbUserData => {
+      if (!dbUserData[0]) {
+          res.status(404).json({ message: 'User ID not found' });
+          return;
+      }
+      res.json(dbUserData);
+  })
+  .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+  });
+});
+
+  // this was for testing purposes
   //  User.create({ 
   //   name:"specialK",
   //   email:"khole@test.test",
