@@ -16,6 +16,6 @@
     "express-handlebars": "^7.0.7",
     "js-cookie": "^3.0.5",
     "mysql2": "^3.3.3",
-    "sequelize": "^6.31.1"
+    "sequelize": "^6.32.0"
   }
 }
