@@ -103,6 +103,7 @@ router.post('/logout', (req, res) => {
     }
 });
   
+module.exports = router;
 // TODO: PUT request to update a user by id
 router.put('/:id', withAuth, (req, res) => {
   User.update(req.body, {
