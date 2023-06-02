@@ -103,6 +103,7 @@ router.post('/logout', (req, res) => {
     }
 });
   
+module.exports = router;
   
   //  User.create({ 
   //   name:"specialK",
