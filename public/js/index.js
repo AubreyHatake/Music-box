@@ -1,18 +1,17 @@
 const express = require('express')
 const path = require('path');
 const axios = require('axios');
-const dotenv = require('dotenv');
 const sequelize = require('./config/connection');
-const apiRoutes = require('./controllers/api/user-routes');
-const spotifyRoutes = require('./controllers/api/spotify-routes');
+const { User, Review } = require('./models');
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express()
 const port = 3001
-dotenv.config();
 
-const exphbs  = require('express-handlebars');
-app.engine('.handlebars', exphbs.engine({extname: '.handlebars',layoutsDir:'./views'}));
-app.set('view engine', '.handlebars');
-app.set('views', path.join(__dirname, 'views'));
+app.use('/', express.static(path.join(__dirname, 'public')))
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname,'/public/index.html'))
+// })
 
 app.get('/spotify-api', (req, res) => {
   let q = req.query.q;
@@ -49,10 +48,8 @@ app.get('/spotify-api', (req, res) => {
 
         .then((response) => {
         // console.log(response);
-        console.log(response.data.albums);
-        // exphbs.getTemplate('./views/search-result.handlebars')
-        res.render("search-results",response.data.albums)
-        // res.send(response.data)
+        console.log(response.data);
+        res.send(response.data)
       })
           // console.log(response.data);
           // res.send(response.data);
@@ -63,9 +60,3 @@ app.get('/spotify-api', (req, res) => {
       console.log("bad new bears");
     }
 })
-
-app.use('/', express.static(path.join(__dirname, 'public')))
-spotifyRoutes.applyRoutes()
-sequelize.sync({ force: false }).then(() => {
-  app.listen(port, () => console.log(`app listening on port ${port} !! `));
-});

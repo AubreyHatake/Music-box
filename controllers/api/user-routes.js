@@ -1,6 +1,9 @@
 const { User, Review } = require('../../models');
+const router = require('express').Router(); 
+const sequelize = require('../../config/connection');
 
-// GET /api/users
+
+// GET /api/users this is the route we are hitting in insomnia core to get all users
 router.get('/', (req, res) => {
   // Access our User model and run .findAll() method
   User.findAll({
@@ -58,10 +61,47 @@ router.post('/', (req, res) => {
   })
 });
   
-// TODO: Add a POST route to login a user
+//POST route to login a user
   
-  
-  
+  router.post('/login', (req, res) => {
+    User.findOne({
+        where: {
+            email: req.body.email
+        }
+    }).then(dbUserData => {
+        if (!dbUserData) {
+            res.status(400).json({ message: 'User not found' });
+            return;
+        }
+
+        const validPassword = dbUserData.checkPassword(req.body.password);
+
+        if (!validPassword) {
+            res.status(400).json({ message: 'Incorrect password' });
+            return;
+        }
+
+        req.session.save(() => {
+            req.session.user_id = dbUserData.id;
+            req.session.name = dbUserData.name;
+            req.session.loggedIn = true;
+
+            res.json({ user: dbUserData, message: 'You are now logged in!' });
+        });
+    });
+});
+
+// logout route
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+      req.session.destroy(() => {
+          res.status(204).end();
+      });
+      }
+    else {
+      res.status(404).end();
+    }
+});
   
   
   //  User.create({ 
