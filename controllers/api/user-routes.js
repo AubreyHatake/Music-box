@@ -124,23 +124,3 @@ router.put('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
   });
 });
-
-  // this was for testing purposes
-  //  User.create({ 
-  //   name:"specialK",
-  //   email:"khole@test.test",
-  //   password:"keta-4-life"
-  //   })
-  //   .then((user) => {
-  //     console.log(user.dataValues)
-
-  //     Review.create({
-  //       album_id: "1234",
-  //       user_id: user.dataValues.user_id,
-  //       review: "this is a review"
-  //     })
-  //     .then((review) => {
-  //       console.log(review)
-  //     })
-  //   })
-    
