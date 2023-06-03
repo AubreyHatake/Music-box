@@ -1,6 +1,6 @@
 const router = require('express').Router(); 
  
-router.get('/spotify/lookup', async (req, res) => {
+router.get('/api/spotify/lookup', async (req, res) => {
     let albumid = req.query.albumid;
       res.send(await fetchAlbumById(albumid))
   })
