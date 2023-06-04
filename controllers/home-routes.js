@@ -36,9 +36,9 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/project/:id', async (req, res) => {
+router.get('/review/:id', async (req, res) => {
   try {
-    const projectData = await Review.findByPk(req.params.id, {
+    const reviewData = await Review.findByPk(req.params.id, {
       include: [
         {
           model: User,
@@ -47,7 +47,7 @@ router.get('/project/:id', async (req, res) => {
       ],
     });
 
-    const project = projectData.get({ plain: true });
+    const review = reviewData.get({ plain: true });
 
     res.render('review', {
       ...project,
@@ -60,22 +60,22 @@ router.get('/project/:id', async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
-  try {
+  // try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+      include: [{ model: Review }],
     });
 
     const user = userData.get({ plain: true });
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: false
     });
-  } catch (err) {
-    res.status(500).json(err);
-  }
+  // } catch (err) {
+  //   res.status(500).json(err);
+  // }
 });
 
 router.get('/login', (req, res) => {
@@ -89,7 +89,7 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/search-results/:albumid', (req, res) => {
+router.get('/api/spotify/lookup/:albumid', (req, res) => {
   let albumid = req.query.albumid;
   if (req.session.logged_in) {
     res.redirect('/');

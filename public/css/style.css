@@ -1,6 +1,21 @@
 :root{
     background-color: #4A4A4A;;
 }
+
+#mb{
+    font-size: 50px;
+}
+
+#homeBtn {
+    display: flex;
+    color: white;
+    position: relative;
+    bottom: 85px;
+    left: 65%;
+    background-color:transparent;
+    border: transparent;
+    font-size: 20px;
+}
 #btn-primary{
     display: flex;
     color: white;
@@ -11,11 +26,29 @@
     border: transparent;
     font-size: 30px;
    }
+.AccountBtn{
+    display: flex;
+    color: white;
+    position: relative;
+    bottom: 85px;
+    left: 75%;
+    background-color:transparent;
+    border: transparent;
+    font-size: 20px;
+    
+   }
 .card-title{
     color: white;
     background-color: #323332;
     padding: 40px;
+    font-size: 30px;
     
+}
+.card-SubTitle{
+    color: white;
+    background-color: #323332;
+    padding: 40px;
+    font-size: 25px;
 }
 .card text-start{
     color:#323332;
@@ -43,15 +76,15 @@ color: #000000;
     background-color: lightgray;
     position: relative;
     bottom: 80px;
-    left: 500px;
-    border: 1px solid black;
+    left: 100%;
+    border: 1px solid black;  
 }
 
 #searchBox{
     background-color: white;
     position: relative;
     bottom: 80px;
-    left: 500px;
+    left: 100%;
 }
 
 .card-deck {
