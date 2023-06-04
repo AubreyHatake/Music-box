@@ -2,6 +2,11 @@
 const review = document.querySelector('#writeReview');
 const currentReview = document.querySelector('#current-review');
 
+const response = await fetch('/api/user', {
+    method: 'POST',
+    body: JSON.stringify({ name, email, password }),
+    headers: { 'Content-Type': 'application/json' },
+  });
 // this function is creating elements to allow the user to create a review 
 function writeReview() {
     if (currentReview.firstElementChild) {
