@@ -23,12 +23,12 @@ router.get('/', async (req, res) => {
     //   projects, 
     //   logged_in: req.session.logged_in 
     // });
-    const session = req.session;
-    const loggedIn = session.loggedIn || false;
-    console.log("logged in =")
-    console.log(loggedIn)
+    // const session = req.session;
+    // const loggedIn = session.loggedIn || false;
+    // console.log("logged in =")
+    // console.log(loggedIn)
     res.render('homepage', {
-      loggedIn:loggedIn, 
+      //loggedIn:loggedIn, 
 
     });
   } catch (err) {
@@ -62,16 +62,13 @@ router.get('/review/:id', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   // try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Review }],
-    });
-
-    const user = userData.get({ plain: true });
+    const userData = await User.findByPk(req.session.user_id);
+console.log(userData)
+    // const user = userData.get({ plain: true });
 
     res.render('profile', {
-      ...user,
-      logged_in: false
+      ...userData,
+      // logged_in: false
     });
   // } catch (err) {
   //   res.status(500).json(err);
