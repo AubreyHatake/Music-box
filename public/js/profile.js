@@ -1,31 +1,50 @@
-// variables
-const review = document.querySelector('#writeReview');
-const currentReview = document.querySelector('#current-review');
-
-const response = await fetch('/api/user', {
-    method: 'POST',
-    body: JSON.stringify({ name, email, password }),
-    headers: { 'Content-Type': 'application/json' },
-  });
-// this function is creating elements to allow the user to create a review 
-function writeReview() {
-    if (currentReview.firstElementChild) {
-        currentReview.firstElementChild.remove();
+const newFormHandler = async (event) => {
+    event.preventDefault();
+  
+    const name = document.querySelector('#review-name').value.trim();
+    const review_rating = document.querySelector('#review-rating').value.trim();
+    const description = document.querySelector('#review-desc').value.trim();
+  
+    if (name && review_rating  && description) {
+      const response = await fetch(`/api/reviews`, {
+        method: 'POST',
+        body: JSON.stringify({ name, review_rating , description }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert('Failed to create review');
+      }
     }
-
-    var h2 = document.createElement('h2');
-    h2.textContent = "Write your review here!!";
-    currentReview.append(h2);
-    var input = document.createElement('input');
-    currentReview.append(input);
-    var button = document.createElement('button');
-    button.textContent = "Submit";
-    currentReview.append(button);
-
-
-};
-
-
-review.addEventListener("click", writeReview);
+  };
+  
+  const delButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/reviews/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert('Failed to delete review');
+      }
+    }
+  };
+  
+  document
+    .querySelector('.new-review-form')
+    .addEventListener('submit', newFormHandler);
+  
+  document
+    .querySelector('.review-list')
+    .addEventListener('click', delButtonHandler);
+  
 
 
