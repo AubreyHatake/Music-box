@@ -87,13 +87,19 @@ async function refreshToken() {
 
 router.get('/search-results/:searchTerm', async (req, res) => {
 
-  // const userData = await User.findByPk(req.session.user_id);
-  // const session = req.session;
-  // const loggedIn = session.loggedIn || false;
+  const userData = await User.findByPk(req.session.user_id);
+  const session = req.session;
+  const loggedIn = session.loggedIn || false;
   let searchTerm = req.params.searchTerm;
   let albums = await trySearchAlbumByTerm(searchTerm)
-  console.log(albums)
-  res.render('search-results', albums);
+  
+  const renderData = {
+    ...userData,
+    loggedIn: loggedIn,
+    albums: albums
+  }
+  console.log(renderData)
+  res.render('search-results', renderData);
 
   async function trySearchAlbumByTerm(searchTerm) {
     let albums = await trySearchAlbum(searchTerm)
