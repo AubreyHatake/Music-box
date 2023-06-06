@@ -1,7 +1,7 @@
 <h1>Album</h1>
-<h2>{{this.name}}</h2>
-<h3>{{this.release_date}}</h3>
-<form method="post" action="/submit-review">
+<h2>{{album.name}}</h2>
+<h3>{{album.release_date}}</h3>
+<form action="/submit-review">
   <label for="review">Review</label><br>
   <input type="text" id="review" name="review" placeholder="Leave a review...">
   <button>Submit</button>

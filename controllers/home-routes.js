@@ -98,7 +98,7 @@ router.get('/search-results/:searchTerm', async (req, res) => {
     loggedIn: loggedIn,
     albums: albums
   }
-  console.log(renderData)
+  
   res.render('search-results', renderData);
 
   async function trySearchAlbumByTerm(searchTerm) {
@@ -134,9 +134,16 @@ router.get('/album/:albumid', async (req, res) => {
     return;
   }
   const response = await fetchAlbumById(albumid)
-  console.log('response.data')
-  console.log(response.data)
-  res.render('album', response.data);
+  const userData = await User.findByPk(req.session.user_id);
+  const session = req.session;
+  const loggedIn = session.loggedIn || false;
+  const renderData = {
+    ...userData,
+    loggedIn: loggedIn,
+    album: response.data
+  }
+  
+  res.render('album', renderData);
 
   async function fetchAlbumById(albumid) {
     let album = await tryFetchAlbum(albumid)
