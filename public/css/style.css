@@ -136,3 +136,18 @@ display: none;
     color: whitesmoke;
 }
 
+.albumFonts {
+    font-family: 'Georgia';
+    color: whitesmoke;
+}
+.gap-40 {
+    gap: 40px;
+}
+
+.mw-300{
+    max-width: 300px;
+}
+
+.mb-50{
+    margin-bottom: 50px;
+}

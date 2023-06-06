@@ -1,11 +1,13 @@
-<h1>Albums</h1>
-<ul class="items-list">
-  {{#each albums.items}}
-    <li>
-      <a href="/album/{{this.id}}"> 
+<div class="d-flex align-items-center flex-column albumFonts">
+  <h1 class="mb-50">Albums</h1>
+  <ul class="items-list d-flex flex-wrap gap-40 align-items-center ">
+    {{#each albums.items}}
+    <li class="d-flex align-items-center flex-column mw-300">
+      <a href="/album/{{this.id}}">
         <h2>{{this.name}}</h2>
-        <img src="{{this.images.1.url}}">
+        <img  src="{{this.images.1.url}}">
       </a>
     </li>
-  {{/each}}
-</ul>
+    {{/each}}
+  </ul>
+</div>
