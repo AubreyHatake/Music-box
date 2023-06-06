@@ -4,14 +4,46 @@ const withAuth = require('../utils/auth');
 const axios = require('axios')
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
+// router.get("/", async (req, res) => {
 
+  
+// });
+
+
+async function fetchAlbumById(albumid) {
+  let album = await tryFetchAlbum (albumid)
+  if (!album) {
+    await refreshToken()
+   album = await tryFetchAlbum (albumid)
+  } 
+  console.log(album.name);
+  return album
+}
+async function tryFetchAlbum(albumid) {
+  try {
+   const response = await axios.get(`https://api.spotify.com/v1/albums/${albumid}`, {
+      headers: { Authorization: `Bearer ${apiToken}` },
+    }) 
+    // console.log(response.data);
+    return response.data
+  } catch(error){console.log(error)}
+}
 router.get('/', async (req, res) => {
   try {
+
+const reviewData = await Review.findAll({ })
     const session = req.session;
     const loggedIn = session.loggedIn || false;
-    res.render('homepage', {
-      loggedIn: loggedIn
+    const reviews = reviewData.map((review) => review.get({ plain: true }));
+    reviews.forEach(review => {
+   fetchAlbumById(review.album_id)
+    });
+  
+   
 
+    res.render('homepage', {
+      loggedIn: loggedIn,
+reviews,
 
     });
   } catch (err) {
