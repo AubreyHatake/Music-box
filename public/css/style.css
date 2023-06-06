@@ -1,5 +1,5 @@
 :root{
-    background-color: #4A4A4A;;
+    background-color: rgb(62, 62, 62) ;;
 }
 
 #mb{
@@ -8,7 +8,7 @@
 
 #homeBtn {
     display: flex;
-    color: white;
+    color: #d8ffd3;
     position: relative;
     bottom: 85px;
     left: 65%;
@@ -18,7 +18,7 @@
 }
 #btn-primary{
     display: flex;
-    color: white;
+    color: #64adc4 ;
     position: relative;
     bottom: 85px;
     left: 500px;
@@ -28,52 +28,62 @@
    }
 .AccountBtn{
     display: flex;
-    color: white;
+    color:#d8ffd3;
     position: relative;
     bottom: 85px;
     left: 75%;
     background-color:transparent;
-    border: transparent;
+    border: 20%;
     font-size: 20px;
     
    }
 .card-title{
-    color: white;
-    background-color: #323332;
+    color: #d8ffd3;
+    background-color: #8fdbc5;
     padding: 40px;
     font-size: 30px;
     
 }
+
+.mbTitle{
+    font-family: 'amagro';
+    font-size: 36px;
+    color: #d8ffd3;
+    
+}
 .card-SubTitle{
-    color: white;
-    background-color: #323332;
+    color:rgb(62, 62, 62) ;
+    background-color: #8fdbc5 ;
     padding: 40px;
     font-size: 25px;
+    
 }
-.card text-start{
+.card {
     color:#323332;
-    background-color: #4A4A4A;
+    background-color: #64adc4;
+    border: #000000;
+    border-radius: 20%;
 }
 .btn-toolbar{
-background-color: #4A4A4A;
+background-color: rgb(62, 62, 62);
 left: 50px;
 bottom: 80px;
-color: #000000;
 }
 
 .btn{
-    background-color: #4A4A4A;
+    background-color:#d8ffd3;
     position: relative;
+    color: rgb(62, 62, 62);
 }
 .card text-start1{
     position: center;
 }
 .card-body{
-    background-color: #4A4A4A;
+    background-color: rgb(62, 62, 62);
 }
 
 #searchButton{
-    background-color: lightgray;
+    background-color: #d8ffd3;
     position: relative;
     bottom: 80px;
     left: 100%;
@@ -81,7 +91,7 @@ color: #000000;
 }
 
 #searchBox{
-    background-color: white;
+    background-color:white;
     position: relative;
     bottom: 80px;
     left: 100%;
@@ -128,17 +138,17 @@ display: none;
 }
 
 #profileBack {
-    background-color: #4A4A4A;
+    background-color: lightgrey;
 }
 
 .profileFonts {
-    font-family: 'Georgia';
-    color: whitesmoke;
+    font-family: 'amagro';
+    color: rgb(62, 62, 62);
 }
 
 .albumFonts {
-    font-family: 'Georgia';
-    color: whitesmoke;
+    font-family: 'amagro';
+    color: rgb(62, 62, 62);
 }
 .gap-40 {
     gap: 40px;
