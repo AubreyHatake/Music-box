@@ -126,3 +126,13 @@ display: none;
     font-size: 15px;
     cursor: pointer;
 }
+
+#profileBack {
+    background-color: #4A4A4A;
+}
+
+.profileFonts {
+    font-family: 'Georgia';
+    color: whitesmoke;
+}
+
