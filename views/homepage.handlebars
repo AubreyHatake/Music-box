@@ -4,35 +4,19 @@
         <h4 class="card-SubTitle">Recently Reviewed Albums:</h4>
         <section class="container1">
         <div class="card-deck">
+          {{!-- {{#each album}} --}}
+          {{!-- {{album.name}} --}}
+            {{!-- {{/each}} --}}
+          {{#each reviews}}
           <div class="card">
             <img src="..." class="card-img-top" alt="Album cover will go here">
             <div class="card-body">
               <h5 class="card-title" id="artistName">Artist name goes here</h5>
-              <p class="card-text" id="albumName">album name goes here</p>
+              <p class="card-text" id="albumName">{{album.name}}</p>
             </div>
             <div class="card-footer">
-              <button class="reviewbtn" id="review"> Review here </button>
+              <button class="reviewbtn" id="review"> {{review}} </button>
             </div>
           </div>
-          <div class="card">
-            <img src="..." class="card-img-top" alt="Album cover will go here">
-            <div class="card-body">
-              <h5 class="card-title">Artist name goes here</h5>
-              <p class="card-text">album name goes here</p>
-            </div>
-            <div class="card-footer">
-              <button class="reviewbtn" id="review"> Review here </button>
-            </div>
-          </div>
-          <div class="card">
-            <img src="..." class="card-img-top" alt="Album cover will go here">
-            <div class="card-body">
-              <h5 class="card-title">Artist name goes here</h5>
-              <p class="card-text">album name goes here</p>
-            </div>
-            <div class="card-footer">
-              <button class="reviewbtn" id="review"> Review here </button>
-            </div>
-          </section>
-          </div>
+          {{/each}}
         </div>
