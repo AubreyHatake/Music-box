@@ -1,30 +1,31 @@
-<div class="row">
+ {{!-- <link rel="stylesheet" href="/css/style.css" /> --}}
+<div class="row"  >
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2 class="profileFonts">Welcome, {{this.name}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Review:</h3>
+<div class="row mt-4" >
 
+  <div class="d-flex align-items-center flex-column" style="height: 200px;">
+    <h3 class="profileFonts">Create a New Review:</h3>
     <form class="form new-review-form">
-      <div class="form-group">
-        <label for="review-name">review title:</label>
+      <div class="mt-auto p-2">
+        <label for="review-name" class="profileFonts">review title:</label>
         <input class="form-input" type="text" id="review-name" name="review-name" />
       </div>
-      <div class="form-group">
-        <label for="review-rating">Rating: (1-10)</label>
+      <div class="mt-auto p-2">
+        <label for="review-rating" class="profileFonts">Rating: (1-10)</label>
         <input class="form-input" type="number" id="review-rating" name="review-rating" />
       </div>
-      <div class="form-group">
-        <label for="review-desc">description:</label>
+      <div class="mt-auto p-2">
+        <label for="review-desc" class="profileFonts">description:</label>
         <textarea class="form-input" id="review-desc" name="review-desc"></textarea>
       </div>
-      <div class="form-group">
+      <div class="p-2">
         <button type="submit" class="btn btn-primary">Create</button>
-      </div>
     </form>
+    </div>
   </div>
 
   {{#if reviews.length}}
