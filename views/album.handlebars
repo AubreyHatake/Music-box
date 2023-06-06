@@ -2,9 +2,17 @@
   <h1>Album</h1>
   <h2>Title: {{album.name}}</h2>
   <h3>Released Date: {{album.release_date}}</h3>
-  <form action="/submit-review">
+  <ul>{{#each reviews}}
+    <li>
+      <p>{{this.dataValues.review}}</p>
+    </li>
+  {{/each}} 
+</ul>
+  <form method="post" action="/api/review">
     <label for="review"></label><br>
     <input type="text" id="review" name="review" placeholder="Leave a review...">
     <button>Submit</button>
-  </form>
+    <input type="hidden" id="album_id" name="album_id" value="{{album.id}}" />
+  <input type="hidden" id="user_id" name="user_id" value="1" />
+</form>
 </div>
