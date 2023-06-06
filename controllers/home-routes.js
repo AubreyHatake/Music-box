@@ -92,13 +92,13 @@ router.get('/search-results/:searchTerm', async (req, res) => {
   const loggedIn = session.loggedIn || false;
   let searchTerm = req.params.searchTerm;
   let albums = await trySearchAlbumByTerm(searchTerm)
-  
+
   const renderData = {
     ...userData,
     loggedIn: loggedIn,
     albums: albums
   }
-  
+
   res.render('search-results', renderData);
 
   async function trySearchAlbumByTerm(searchTerm) {
@@ -119,7 +119,7 @@ router.get('/search-results/:searchTerm', async (req, res) => {
         }
       })
       return response.data.albums
-      
+
     } catch (error) {
       console.log(error)
     }
@@ -142,7 +142,7 @@ router.get('/album/:albumid', async (req, res) => {
     loggedIn: loggedIn,
     album: response.data
   }
-  
+
   res.render('album', renderData);
 
   async function fetchAlbumById(albumid) {
