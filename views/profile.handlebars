@@ -29,8 +29,9 @@
   </div>
 
   {{#if reviews.length}}
-  <div class="col-md-6 project-list">
-    <h3>Current Reviews:</h3>
+  <div class="d-flex align-items-center flex-column" style="height: 200px;"></div>
+  <div class="col-md-6 review-list">
+    <h3 class="profileFonts">Current Reviews:</h3>
 
     {{#each reviews as |review|}}
     <div class="row mb-2">
@@ -45,4 +46,5 @@
   </div>
   {{/if}}
 </div>
-<script src="/public/js/profile.js"></script>
+</div>
+<script src="/js/profile.js"></script>
