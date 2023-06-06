@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Review, User } = require('../models');
 const withAuth = require('../utils/auth');
 const axios = require('axios')
+const Sequelize = require('sequelize');
+const op = Sequelize.Op;
 
 router.get('/', async (req, res) => {
   try {
@@ -135,14 +137,26 @@ router.get('/album/:albumid', async (req, res) => {
   }
   const response = await fetchAlbumById(albumid)
   const userData = await User.findByPk(req.session.user_id);
+  const reviews = await Review.findAll({
+    where: {
+    album_id: {
+    [op.eq]: albumid
+    }
+  }
+});
+console.log(reviews)
+
   const session = req.session;
   const loggedIn = session.loggedIn || false;
   const renderData = {
     ...userData,
     loggedIn: loggedIn,
-    album: response.data
+    album: response.data,
+    user_id: session.userId,
+    reviews: reviews
   }
-  
+  console.log(session)
+
   res.render('album', renderData);
 
   async function fetchAlbumById(albumid) {
@@ -166,6 +180,10 @@ router.get('/album/:albumid', async (req, res) => {
 
 });
 
+// router.post("/submit-review", (req, res) => {
+//   console.log(req.body.review)
+//   res.redirect(req.get('Referer'));
+// })
 
 
 module.exports = router;
