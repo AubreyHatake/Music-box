@@ -6,7 +6,7 @@ const newFormHandler = async (event) => {
     const description = document.querySelector('#review-desc').value.trim();
   
     if (name && review_rating  && description) {
-      const response = await fetch(`/api/reviews`, {
+      const response = await fetch(`/api/review`, {
         method: 'POST',
         body: JSON.stringify({ name, review_rating , description }),
         headers: {
@@ -15,7 +15,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/profile');
+        document.location.replace('/');
       } else {
         alert('Failed to create review');
       }
