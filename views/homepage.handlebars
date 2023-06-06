@@ -8,15 +8,15 @@
           {{!-- {{album.name}} --}}
             {{!-- {{/each}} --}}
           {{#each reviews}}
-          <div class="card">
-            <img src="..." class="card-img-top" alt="Album cover will go here">
+          <ul class=" card ">
+            <h5 class="card-title2" id="artistName">Artist name goes here</h5>
             <div class="card-body">
-              <h5 class="card-title" id="artistName">Artist name goes here</h5>
+              <img src="..." class="card-img-top" alt="Album cover will go here">
               <p class="card-text" id="albumName">{{album.name}}</p>
             </div>
             <div class="card-footer">
-              <button class="reviewbtn" id="review"> {{review}} </button>
+              <p class="reviewbtn" id="review"> Review: {{review}} </p>
             </div>
-          </div>
+          </ul>
           {{/each}}
         </div>
