@@ -93,11 +93,7 @@ router.get('/search-results/:searchTerm', async (req, res) => {
   let searchTerm = req.params.searchTerm;
   let albums = await trySearchAlbumByTerm(searchTerm)
   console.log(albums)
-  res.render('search-results',{ 
-    albums,
-    // ...userData,
-    loggedIn: req.session.loggedIn
-    });
+  res.render('search-results', albums);
 
   async function trySearchAlbumByTerm(searchTerm) {
     let albums = await trySearchAlbum(searchTerm)

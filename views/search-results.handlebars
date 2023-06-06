@@ -1,16 +1,11 @@
 <h1>Albums</h1>
 <ul class="items-list">
-  {{#if albums.length}}
-    {{else}}
-    <li class="empty">No albums found.</li>
-  
-  {{#each albums as |album|}}
+  {{#each items}}
     <li>
       <a href="/album/{{this.id}}"> 
-        <h2>{{name}}</h2>
+        <h2>{{this.name}}</h2>
         <img src="{{this.images.1.url}}">
       </a>
     </li>
   {{/each}}
-  {{/if}}
 </ul>
