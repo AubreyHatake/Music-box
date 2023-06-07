@@ -1,5 +1,6 @@
 # Music-box
-the deployed link will go here:
+the deployed link will go here: https://music-box.herokuapp.com/
+
 
 ## User Story 
 As a music enthusiast, I want to be able to browse and search for albums, artists, and songs, so that I can find music I'm interested in reviewing.
