@@ -10,7 +10,7 @@ const sessions = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(sessions.Store);
 
 const app = express()
-const port = 3001
+const PORT = process.env.PORT || 3001;
 dotenv.config();
 
 const hbs = exphbs.create({ helpers });
@@ -44,7 +44,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(routes);
 sequelize.sync({ force: false }).then(() => {
-  app.listen(port, () => console.log(`app listening on port ${port} !! `));
+  app.listen(PORT, () => console.log(`app listening on port ${PORT} !! `));
 });
 
 
