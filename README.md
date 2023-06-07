@@ -1,6 +1,7 @@
 # Music-box
 the deployed link will go here: https://music-box.herokuapp.com/
-
+This screenshot is from the search results page, when the user searches an artist, this is the page that pops up!
+![Screenshot](public/images/Screenshot%202023-06-07%20131504.png)
 
 ## User Story 
 As a music enthusiast, I want to be able to browse and search for albums, artists, and songs, so that I can find music I'm interested in reviewing.
