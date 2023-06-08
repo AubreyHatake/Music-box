@@ -1,22 +1,14 @@
  <div class="text-start1">
       
       <div class="card-body">
-        <h4 class="card-SubTitle">Recent Reviews:</h4>
+        <h4 class="card-SubTitle">Recently Reviewed Albums:</h4>
         <section class="container1">
         <div class="card-deck">
-          {{!-- {{#each album}} --}}
-          {{!-- {{album.name}} --}}
-            {{!-- {{/each}} --}}
+          
           {{#each reviews}}
-          <div >
-            {{!-- <img src="..." class="card-img-top" alt="Album cover will go here">
-            <div class="card-body">
-              <h5 class="card-title" id="artistName">Artist name goes here</h5>
-            </div>
-            <div class="card-footer"> --}}
-               {{!-- <p class="card-text" id="albumName">{{album.album_id}}</p> --}}
+             
               <button class="reviewbtn" id="review"> {{review}} </button>
             </div>
-          </ul>
+          </div>
           {{/each}}
         </div>
