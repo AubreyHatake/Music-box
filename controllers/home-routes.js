@@ -4,46 +4,42 @@ const withAuth = require('../utils/auth');
 const axios = require('axios')
 const Sequelize = require('sequelize');
 const op = Sequelize.Op;
-// router.get("/", async (req, res) => {
-
-  
-// });
 
 
 async function fetchAlbumById(albumid) {
-  let album = await tryFetchAlbum (albumid)
+  let album = await tryFetchAlbum(albumid)
   if (!album) {
     await refreshToken()
-   album = await tryFetchAlbum (albumid)
-  } 
+    album = await tryFetchAlbum(albumid)
+  }
   console.log(album.name);
   return album
 }
 async function tryFetchAlbum(albumid) {
   try {
-   const response = await axios.get(`https://api.spotify.com/v1/albums/${albumid}`, {
+    const response = await axios.get(`https://api.spotify.com/v1/albums/${albumid}`, {
       headers: { Authorization: `Bearer ${apiToken}` },
-    }) 
-    // console.log(response.data);
+    })
+
     return response.data
-  } catch(error){console.log(error)}
+  } catch (error) { console.log(error) }
 }
 router.get('/', async (req, res) => {
   try {
 
-const reviewData = await Review.findAll({ })
+    const reviewData = await Review.findAll({})
     const session = req.session;
     const loggedIn = session.loggedIn || false;
     const reviews = reviewData.map((review) => review.get({ plain: true }));
     reviews.forEach(review => {
-   fetchAlbumById(review.album_id)
+      fetchAlbumById(review.album_id)
     });
-  
-   
+
+
 
     res.render('homepage', {
       loggedIn: loggedIn,
-reviews,
+      reviews,
 
     });
   } catch (err) {
@@ -76,10 +72,10 @@ router.get('/review/:id', async (req, res) => {
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
-  // try {
+
   // Find the logged in user based on the session ID
   const userData = await User.findByPk(req.session.user_id);
-  console.log(userData)
+
   // const user = userData.get({ plain: true });
   const session = req.session;
   const loggedIn = session.loggedIn || false;
@@ -87,9 +83,6 @@ router.get('/profile', withAuth, async (req, res) => {
     ...userData,
     loggedIn: loggedIn
   });
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
 });
 
 router.get('/login', (req, res) => {
@@ -171,12 +164,11 @@ router.get('/album/:albumid', async (req, res) => {
   const userData = await User.findByPk(req.session.user_id);
   const reviews = await Review.findAll({
     where: {
-    album_id: {
-    [op.eq]: albumid
+      album_id: {
+        [op.eq]: albumid
+      }
     }
-  }
-});
-console.log(reviews)
+  });
 
   const session = req.session;
   const loggedIn = session.loggedIn || false;
@@ -210,11 +202,6 @@ console.log(reviews)
   }
 
 });
-
-// router.post("/submit-review", (req, res) => {
-//   console.log(req.body.review)
-//   res.redirect(req.get('Referer'));
-// })
 
 
 module.exports = router;
